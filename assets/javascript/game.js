@@ -1,13 +1,17 @@
 // Declare global variables
-
 var numberOptions = [3, 5, 7, 10];
+var wins = 0;
+var losses = 0;
+var totalScore = 0;
 
+// generate random targetNumber
+var targetNumber = Math.floor((Math.random() * 75) + 15);
 
-
-// generate random targetNumber and make text display on page
-
-var targetNumber = Math.floor((Math.random() *100) + 1);
+// make text display/update on the page
 $("#target-number").text(targetNumber);
+$("#win-tally").text(wins);
+$("#loss-tally").text(losses);
+$("#total-score").text(totalScore);
 
 
 // for loop to create new crystal - different number options will be randomly attributed to crystal images
@@ -16,6 +20,10 @@ for (var i = 0; i < numberOptions.length; i++) {
 
 
 }
+
+// add click event function to extract correct crystal value (use $(this))
+
+
 
 
 // EXAMPLE FROM CLASS ACTIVITY 
