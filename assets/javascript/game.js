@@ -1,8 +1,21 @@
 // Declare global variables
 
-var numberOptions = [10, 5, 3, 7];
+var numberOptions = [3, 5, 7, 10];
 
 
+
+// generate random targetNumber and make text display on page
+
+var targetNumber = Math.floor((Math.random() *100) + 1);
+$("#target-number").text(targetNumber);
+
+
+// for loop to create new crystal - different number options will be randomly attributed to crystal images
+
+for (var i = 0; i < numberOptions.length; i++) {
+
+
+}
 
 
 // EXAMPLE FROM CLASS ACTIVITY 
