@@ -1,67 +1,81 @@
-//OUTSIDE THE ONCLICK FUNCTION
+$(document).ready(function () {
 
-// HAVE A RESET() INSIDE ONCLICK
+  // Declare global variables
+  var wins = 0;
+  var losses = 0;
+  var totalScore = 0;
+  var counter = 0;
 
-// Declare global variables
-var numberOptions = [3, 5, 7, 10];
-var wins = 0;
-var losses = 0;
-var totalScore = 0;
+  // generate random numbers for target and crystals
+  var targetNum = Math.floor((Math.random() * 75) + 15);
+  var crystalNum1 = Math.floor((Math.random() * 12) + 1);
+  var crystalNum2 = Math.floor((Math.random() * 12) + 1);
+  var crystalNum3 = Math.floor((Math.random() * 12) + 1);
+  var crystalNum4 = Math.floor((Math.random() * 12) + 1);
 
-// generate random targetNumber
-var targetNumber = Math.floor((Math.random() * 75) + 15);
+  // function reset() {
+  //   guessesLeft = 9;
+  //   userGuesses = [];
+  //   randomLetter = letterArray[Math.floor(Math.random() * letterArray.length)];
+  //   console.log(randomLetter);
+  // }
 
-// make text display/update on the page
-$("#target-number").text(targetNumber);
-$("#win-tally").text(wins);
-$("#loss-tally").text(losses);
-$("#total-score").text(totalScore);
+  // make text display/update on the page
+  $("#target-number").text(targetNum);
+  $("#win-tally").text(wins);
+  $("#loss-tally").text(losses);
+  $("#total-score").text(totalScore);
 
-// have a random number generator for each of the crystals (only want this to regenerate/reset after completion)
-var crystalOne = 0;
-var crystalTwo = 0;
-var crystalThree = 0;
-var crystalFour = 0;
-
-
-
-
-// use array.slice?
-
-// https://stackoverflow.com/questions/17891173/how-to-efficiently-randomly-select-array-item-without-repeats
-
-
-// for loop to create new crystal - different number options will be randomly attributed to crystal images
-
-for (var i = 0; i < numberOptions.length; i++) {
-
-  var rand = numberOptions[Math.floor(Math.random() * numberOptions.length)];
-  rand.attr("data-crystalvalue", numberOptions[i]);
-
-}
-
-// add click event function to extract correct crystal value (use $(this))
+  // generate random number btwn 1-12 and assign to each crystal
+  $("#crystal-1").val(crystalNum1);
+  $("#crystal-2").val(crystalNum2);
+  $("#crystal-3").val(crystalNum3);
+  $("#crystal-4").val(crystalNum4);
 
 
-// EXAMPLE FROM CLASS ACTIVITY 
+  //on click events to extract correct value from each crystal and add to counter
+  $("#crystal-1").on("click", function () {
+    $(this).val();
+    console.log($(this).val());
+    counter += crystalNum1;
+    alert("New score: " + counter);
+  });
 
-// Next we create a for loop to create crystals for every numberOption.
-for (var i = 0; i < numberOptions.length; i++) {
+  $("#crystal-2").on("click", function () {
+    $(this).val();
+    console.log($(this).val());
+    counter += crystalNum2;
+    alert("New score: " + counter);
+  });
 
-    // For each iteration, we will create an imageCrystal
-    var imageCrystal = $("<img>");
+  $("#crystal-3").on("click", function () {
+    $(this).val();
+    console.log($(this).val());
+    counter += crystalNum3;
+    alert("New score: " + counter);
+  });
 
-    // First each crystal will be given the class ".crystal-image".
-    // This will allow the CSS to take effect.
-    imageCrystal.addClass("crystal-image");
+  $("#crystal-4").on("click", function () {
+    $(this).val();
+    console.log($(this).val());
+    counter += crystalNum4;
+    alert("New score: " + counter);
+  });
 
-    // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
 
-    // Each imageCrystal will be given a data attribute called data-crystalValue.
-    // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-
-    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-    $("#crystals").append(imageCrystal);
+  // win/loss logic
+  // SCOPE ISSUES - figure out where to put this
+  if (counter === targetNum) {
+    wins++;
+    alert("You win!");
+    // reset();
   }
+
+  else if (counter >= targetNum) {
+    losses++;
+    alert("You lose!!");
+    // reset();
+  }
+
+
+});
