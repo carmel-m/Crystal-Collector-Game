@@ -23,21 +23,24 @@ var crystalTwo = 0;
 var crystalThree = 0;
 var crystalFour = 0;
 
+
+
+
+// use array.slice?
+
 // https://stackoverflow.com/questions/17891173/how-to-efficiently-randomly-select-array-item-without-repeats
-
-
 
 
 // for loop to create new crystal - different number options will be randomly attributed to crystal images
 
 for (var i = 0; i < numberOptions.length; i++) {
 
+  var rand = numberOptions[Math.floor(Math.random() * numberOptions.length)];
+  rand.attr("data-crystalvalue", numberOptions[i]);
 
 }
 
 // add click event function to extract correct crystal value (use $(this))
-
-
 
 
 // EXAMPLE FROM CLASS ACTIVITY 
