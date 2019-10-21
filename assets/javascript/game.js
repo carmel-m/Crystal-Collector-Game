@@ -1,3 +1,7 @@
+//OUTSIDE THE ONCLICK FUNCTION
+
+// HAVE A RESET() INSIDE ONCLICK
+
 // Declare global variables
 var numberOptions = [3, 5, 7, 10];
 var wins = 0;
@@ -12,6 +16,16 @@ $("#target-number").text(targetNumber);
 $("#win-tally").text(wins);
 $("#loss-tally").text(losses);
 $("#total-score").text(totalScore);
+
+// have a random number generator for each of the crystals (only want this to regenerate/reset after completion)
+var crystalOne = 0;
+var crystalTwo = 0;
+var crystalThree = 0;
+var crystalFour = 0;
+
+// https://stackoverflow.com/questions/17891173/how-to-efficiently-randomly-select-array-item-without-repeats
+
+
 
 
 // for loop to create new crystal - different number options will be randomly attributed to crystal images
