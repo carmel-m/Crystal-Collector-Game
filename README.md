@@ -1,10 +1,12 @@
-# unit-4-game
+# Unit 4 Game - Crystal Collector
 
-include deployed link
+Deployed link: https://carmel-m.github.io/unit-4-game/
 
-languages/technologies used
+Languages/technologies used: HTML, JavaScript, jQuery, Bootstrap
 
-include parameters of the project
+Author: Carmel Meyer
 
-author: Carmel Meyer (with link to portfolio)
+Website/portfolio: https://carmel-m.github.io/Bootstrap-Portfolio/
+
+
 
