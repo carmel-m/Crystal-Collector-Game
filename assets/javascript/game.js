@@ -3,28 +3,36 @@ $(document).ready(function () {
   // Declare global variables
   var wins = 0;
   var losses = 0;
-  var totalScore = 0;
   var counter = 0;
+  var targetNum;
+  var crystalNum1;
+  var crystalNum2;
+  var crystalNum3;
+  var crystalNum4;
+
 
   // generate random numbers for target and crystals
-  var targetNum = Math.floor((Math.random() * 75) + 15);
-  var crystalNum1 = Math.floor((Math.random() * 12) + 1);
-  var crystalNum2 = Math.floor((Math.random() * 12) + 1);
-  var crystalNum3 = Math.floor((Math.random() * 12) + 1);
-  var crystalNum4 = Math.floor((Math.random() * 12) + 1);
+  function randomNumbers() {
+    targetNum = Math.floor((Math.random() * 75) + 15);
+    $("#target-number").text(targetNum);
+    crystalNum1 = Math.floor((Math.random() * 12) + 1);
+    crystalNum2 = Math.floor((Math.random() * 12) + 1);
+    crystalNum3 = Math.floor((Math.random() * 12) + 1);
+    crystalNum4 = Math.floor((Math.random() * 12) + 1);
+  }
 
-  // function reset() {
-  //   guessesLeft = 9;
-  //   userGuesses = [];
-  //   randomLetter = letterArray[Math.floor(Math.random() * letterArray.length)];
-  //   console.log(randomLetter);
-  // }
+  // reset function 
+  function reset() {
+    counter = 0;
+    randomNumbers();
+    $("#counter").text(counter);
+  }
 
   // make text display/update on the page
   $("#target-number").text(targetNum);
   $("#win-tally").text(wins);
   $("#loss-tally").text(losses);
-  $("#total-score").text(totalScore);
+  $("#counter").text(counter);
 
   // generate random number btwn 1-12 and assign to each crystal
   $("#crystal-1").val(crystalNum1);
@@ -38,44 +46,53 @@ $(document).ready(function () {
     $(this).val();
     console.log($(this).val());
     counter += crystalNum1;
-    alert("New score: " + counter);
+    $("#counter").text(counter);
+    checkScore();
   });
 
   $("#crystal-2").on("click", function () {
     $(this).val();
     console.log($(this).val());
     counter += crystalNum2;
-    alert("New score: " + counter);
+    $("#counter").text(counter);
+    checkScore();
   });
 
   $("#crystal-3").on("click", function () {
     $(this).val();
     console.log($(this).val());
     counter += crystalNum3;
-    alert("New score: " + counter);
+    $("#counter").text(counter);
+    checkScore();
   });
 
   $("#crystal-4").on("click", function () {
     $(this).val();
     console.log($(this).val());
     counter += crystalNum4;
-    alert("New score: " + counter);
+    $("#counter").text(counter);
+    checkScore();
   });
 
 
-  // win/loss logic
-  // SCOPE ISSUES - figure out where to put this
-  if (counter === targetNum) {
-    wins++;
-    alert("You win!");
-    // reset();
+  // function to check score and determine if win or loss
+  function checkScore() {
+    if (counter === targetNum) {
+      wins++;
+      $("#win-tally").text(wins);
+      alert("You won!");
+      reset();
+    }
+
+    if (counter > targetNum) {
+      losses++;
+      $("#loss-tally").text(losses);
+      alert("You lost :(");
+      reset();
+    }
   }
 
-  else if (counter >= targetNum) {
-    losses++;
-    alert("You lose!!");
-    // reset();
-  }
+  randomNumbers();
 
 
 });
